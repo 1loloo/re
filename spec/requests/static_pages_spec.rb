@@ -5,22 +5,36 @@ require 'spec_helper'
 
 describe "Static pages" do
 
+  subject { page }
+
   describe "Home page" do
+		before { visit root_path } 
 
-    it "should have the h1 'Коммерческая недвижимость'" do
-      visit '/static_pages/home'
-      page.should have_selector('h1', :text => 'Коммерческая недвижимость')
-    end
+    it { should have_selector('h1',    text: 'Коммерческая недвижимость') }
+    it { should have_selector('title', text: full_title('')) }
+    it { should_not have_selector 'title', text: '| Главная' }
+  end
 
-    it "should have the base title" do
-      visit '/static_pages/home'
-      page.should have_selector('title', :text => "Коммерческая недвижимость")
-    end
+  describe "Настройки" do
+		before { visit settings_path } 
 
-    it "should not have a custom page title" do
-      visit '/static_pages/home'
-      page.should_not have_selector('title', :text => '| Главная')
-    end
-
+    it { should have_selector('h1',    text: 'Настройки') }
+    it { should have_selector('title', 
+															text: full_title('Настройки')) }
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

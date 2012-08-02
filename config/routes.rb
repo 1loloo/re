@@ -1,8 +1,11 @@
 Re::Application.routes.draw do
 
-	#root :to => "static_pages/home"
-  get "static_pages/home"
+  get "users/new"
 
+  root to: 'static_pages#home'
+  match '/settings', to: 'static_pages#settings'
+  match '/contact', to: 'static_pages#contact'
+  match '/signup',  to: 'users#new'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
