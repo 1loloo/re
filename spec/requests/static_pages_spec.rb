@@ -10,7 +10,6 @@ describe "Static pages" do
   describe "Home page" do
 		before { visit root_path } 
 
-    it { should have_selector('h1',    text: 'Коммерческая недвижимость') }
     it { should have_selector('title', text: full_title('')) }
     it { should_not have_selector 'title', text: '| Главная' }
   end
@@ -18,7 +17,6 @@ describe "Static pages" do
   describe "Настройки" do
 		before { visit settings_path } 
 
-    it { should have_selector('h1',    text: 'Настройки') }
     it { should have_selector('title', 
 															text: full_title('Настройки')) }
   end
