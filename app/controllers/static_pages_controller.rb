@@ -3,10 +3,7 @@ class StaticPagesController < ApplicationController
   def home
   end
 
-  def settings
-  end
-
-	def contact
+	def ad
 	end
 
 end

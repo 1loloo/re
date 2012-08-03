@@ -2,10 +2,11 @@ Re::Application.routes.draw do
 
   get "users/new"
 
+  get "ads/new"
+
   root to: 'static_pages#home'
-  match '/settings', to: 'static_pages#settings'
-  match '/contact', to: 'static_pages#contact'
-  match '/signup',  to: 'users#new'
+  match '/ad', to: 'static_pages#ad'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
