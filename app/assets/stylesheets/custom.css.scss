@@ -1,7 +1,15 @@
 @import "bootstrap";
 
-/* Large desktop */
+$grayMediumLight: #eaeaea;
 
+@mixin box_sizing {
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box;
+}
+
+
+/* Large desktop */
 
 html {
   overflow-y: scroll;
@@ -76,6 +84,98 @@ footer ul li {
   float: left;
   margin-left: 10px;
 }
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+#post_area {
+	text-align: center;
+	width: 70px;
+}
+
+#post_floor {
+	text-align: center;
+	width: 60px;
+}
+
+#post_rooms_number {
+	text-align: center;
+	width: 30px;
+}
+
+#post_title {
+	width: 500px;
+}
+
+.alert {
+	text-align: center;
+}
+
+.glow {
+	border-top: #ccc solid 1px;
+	border-bottom: #ccc solid 1px;
+  background-color: #f9f9f9;
+}
+
+.glow1 {
+	border-top: #ccc solid 1px;
+}
+
+.prettyback {
+  background-color: #f9f9f9;
+	padding:20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+
+
+
+@media (min-width: 1200px) { 
+	textarea {
+		width: 755px;
+	}
+}
+
+@media (min-width: 980px) and (max-width: 1199px) {
+	textarea {
+		width: 610px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+	textarea {
+		width: 495px;
+	}
+}
+
+@media (max-width: 767px) { 
+	textarea {
+		width: 355px;
+	}
+}
+
+@media (max-width: 480px) {
+	textarea {
+		width: 100px;
+	}
+}
+
+
+
+
+
 
 
 

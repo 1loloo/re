@@ -11,7 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120803170840) do
+ActiveRecord::Schema.define(:version => 20120805193730) do
+
+  create_table "ads", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "owner",        :limit => 1
+    t.integer  "deal",         :limit => 1
+    t.integer  "real_estate",  :limit => 1
+    t.integer  "purpose",      :limit => 1
+    t.float    "area"
+    t.integer  "floor",        :limit => 1
+    t.integer  "rooms_number", :limit => 1
+    t.boolean  "water"
+    t.boolean  "light"
+    t.boolean  "bathroom"
+    t.boolean  "heating"
+    t.string   "image"
+    t.integer  "region",       :limit => 1
+    t.integer  "city",         :limit => 1
+    t.integer  "user_id"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "ads", ["user_id"], :name => "index_ads_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"
