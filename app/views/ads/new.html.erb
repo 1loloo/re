@@ -1,74 +1,32 @@
 <% provide(:title, 'Подать объявление') %>
-<div class="span10 myform">
-    <%= form_for @ad, :as => :post, :url => ads_path, :html => {:class => "well"} do |f| %>
-			<%= render 'shared/error_messages' %>
-			<div>
-			<%= f.label :title, 'Заголовок' %>
-      <%= f.text_field :title %>
-      <%= f.label :description, 'Описание' %>
-      <%= f.text_area :description, :rows => 7 %>
-			</div>			
 
-			<div class="form-inline glow1">
+<div class="myform">
+    <%= form_for @ad, :as => :post, :url => ads_path, :html => {:class => "well"}, :remote => true do |f| %>
+			<%= render 'shared/error_messages' %>
+			
+			<div class="title_description">
+			<%= f.label :title, "Заголовок #{show_errors(@ad, :title)}" %>
+      <%= f.text_field :title %><br/>
+      <%= f.label :description, "Описание #{show_errors(@ad, :description)}" %>
+      <%= f.text_area :description, :rows => 7 %>
+			</div>	
+
+<div class="buttons">
+			<div class="radio_button">
 			<%= f.radio_button :deal, 'rent' %> 
 			<%= label :post_deal, :rent, 'Аренда' %>&nbsp;&nbsp;&nbsp;
 			<%= f.radio_button :deal, 'sale' %>
 			<%= label :post_deal, :sale, 'Продажа' %>
 			</div>
 
-			<div class="form-inline glow">
+			<div class="radio_button">
 			<%= f.radio_button :owner, 'person' %> 
-			<%= label :post_owner, :person, 'Частное лицо' %>&nbsp;&nbsp;&nbsp;
+			<%= label :post_owner, :person, 'Собственность' %>&nbsp;&nbsp;&nbsp;
 			<%= f.radio_button :owner, 'agency' %>
 			<%= label :post_owner, :agency, 'Агентство (Субаренда)' %>
 			</div>
 
-			<div class="form-inline">
-			<%= f.radio_button :real_estate, 'apartment' %> 
-			<%= label :post_real_estate, :apartment, 'Квартира' %>&nbsp;&nbsp;&nbsp;
-			<%= f.radio_button :real_estate, 'condo' %>
-			<%= label :post_real_estate, :condo, 'Комната' %>&nbsp;&nbsp;&nbsp;
-			<%= f.radio_button :real_estate, 'premises' %>
-			<%= label :post_real_estate, :premises, 'Помещение' %>&nbsp;&nbsp;&nbsp;
-			<%= f.radio_button :real_estate, 'house' %> 
-			<%= label :post_real_estate, :house, 'Дом' %>&nbsp;&nbsp;&nbsp;
-			<%= f.radio_button :real_estate, 'site' %> 
-			<%= label :post_real_estate, :site, 'Участок' %>&nbsp;&nbsp;&nbsp;
-			<%= f.radio_button :real_estate, 'garage' %>
-			<%= label :post_real_estate, :garage, 'Гараж' %>
-			</div>
-
-			<div class="form-inline glow">
-			<%= f.radio_button :purpose, 'office' %> 
-			<%= label :post_purpose, :office, 'Офис' %>&nbsp;&nbsp;&nbsp;
-			<%= f.radio_button :purpose, 'trade' %>
-			<%= label :post_purpose, :trade, 'Торговля' %>&nbsp;&nbsp;&nbsp;
-			<%= f.radio_button :purpose, 'service' %>
-			<%= label :post_purpose, :service, 'Сфера услуг' %>&nbsp;&nbsp;&nbsp;
-			<%= f.radio_button :purpose, 'warehouse' %> 
-			<%= label :post_purpose, :warehouse, 'Склад' %>&nbsp;&nbsp;&nbsp;
-			<%= f.radio_button :purpose, 'industry' %> 
-			<%= label :post_purpose, :industry, 'Производство' %>&nbsp;&nbsp;&nbsp;
-			<%= f.radio_button :purpose, 'multipurpose' %>
-			<%= label :post_purpose, :multipurpose, 'Различного назначения' %>
-			</div>
-
-			<br />			
-
-			<div class="form-inline">
-			<%= f.label :area, "Площадь" %>:
-			<%= f.text_field :area %>&nbsp;&nbsp;&nbsp;
-
-			<%= f.label :floor, "Комнат" %>:
-			<%= f.text_field :floor %>&nbsp;&nbsp;&nbsp;
-
-			<%= f.label :rooms_number, "Этаж" %>:
-			<%= f.text_field :rooms_number %>&nbsp;&nbsp;&nbsp;
-			</div>
-
-			<br />
-
-			<div class="form-inline">
+			<div class="check_box">
 			<%= f.check_box :water %>
 			<%= label :post, :water, "Вода" %>&nbsp;&nbsp;&nbsp;
 
@@ -81,33 +39,61 @@
 			<%= f.check_box :heating %>
 			<%= label :post, :heating, "Отопление" %>
 			</div>
+</div>
+<br />
+			<%= f.select(:real_estate, [ ['Тип едвижимости', 0], ['Квартира', 1], ['Комната', 2], ['Помещение', 3], ['Дом', 4], ['Участок', 5], ['Гараж', 6] ],:selected => 0 ) %>
+			<%= f.select(:purpose, [ ['Назначение', 0], ['Офис', 1], ['Торговля', 2], ['Сфера услуг', 3], ['Склад', 4], ['Производство', 5], ['Различного назначения', 6] ],:selected => 0 ) %>
 
-			<div class="form-inline">
-			<%= f.select(:region, [['Lisbon', 1], ['Madrid', 2]]) %>&nbsp;&nbsp;&nbsp;
-			<%= f.select(:city, [['Lisbon', 1], ['Madrid', 2]]) %>
+			<div class="form_numbers">
+<table>
+		<tr><td>
+			<%= f.label :area, "Площадь" %>:
+			<%= f.text_field :area %></td>
+		<td>
+			<%= f.label :price, "Цена" %>:
+			<%= f.text_field :price %></td>
+		<td>
+			<%= f.label :floor, "Комнат" %>:
+			<%= f.text_field :floor %></td>
+		<td>
+			<%= f.label :rooms_number, "Этаж" %>:
+			<%= f.text_field :rooms_number %>
+		</td></tr>
+</table>
 			</div>
 
-			<br />
+<br />
 
-			<div class="form-inline">
-			<%= label :heating, "Фото" %>
+			<div class="form-inline pics">
+			<%= label :heating, "Фото:" %>
   		<%= f.file_field :picture %>
 			</div>
 
 
-
 			<br />
 
-			<div class="form-inline">
-      <%= f.submit "Отправить", class: "btn btn-large" %>&nbsp;&nbsp;&nbsp;
+
+
+
+			<%= render "shared/new_user_fields" %>
+
+			<div class="form-buttons">
+      <%= f.submit "Отправить", class: "btn btn-large" %>
 			<input type="reset" value="Сброс">
 			</div>
 
     <% end %>
+
 </div>
 
-
-
+		<script>
+		$(document).ready(function(){
+			$("#post_purpose, #post_real_estate").hover(function() {
+				$("#post_real_estate option[value='0']").hide();
+				$("#post_purpose option[value='0']").hide();
+			});
+		});
+		</script>
 
 
 

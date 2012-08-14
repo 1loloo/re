@@ -12,6 +12,7 @@ class AdsController < ApplicationController
 
   def new
 		@ad = Ad.new
+		@user = User.new
 #		if current_user
 #			current_user.ad = Ad.new
 #		else 
@@ -22,12 +23,17 @@ class AdsController < ApplicationController
 
   def create
     @ad = Ad.new(params[:post])
-    if @ad.save
+		@user = User.new(params[:user])
+    if @ad.save and @user.save
       flash[:success] = "Объявление успешно создано!"
       redirect_to @ad
     else
       render 'new'
     end
+
+		respond_to do |format|
+		  format.js 
+		end
   end
 
 end

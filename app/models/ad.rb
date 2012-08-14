@@ -22,17 +22,40 @@
 #  user_id      :integer
 #  created_at   :datetime        not null
 #  updated_at   :datetime        not null
+#  price        :decimal(8, 2)
 #
 
 class Ad < ActiveRecord::Base
   belongs_to :user
   attr_accessible :area, :bathroom, :city, :deal, :description, :floor, :image, :light, :owner, 
-									:purpose, :region, :title, :real_estate, :water, :rooms_number, :heating
+									:purpose, :region, :title, :real_estate, :water, :rooms_number, :heating, :price
 
-
-
-
-
+  validates :user_id, presence: true
+  validates :price, presence: true
+  validates :area, presence: true
+	validates :title, presence: true, length: { maximum: 100 }
+  validates :description, presence: true, length: { maximum: 1000 }
+	validates :real_estate, :inclusion => { :in => 1..6 }
+	validates :purpose, :inclusion => { :in => 1..6 }
 
 
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120805193730) do
+ActiveRecord::Schema.define(:version => 20120806162331) do
 
   create_table "ads", :force => true do |t|
     t.string   "title"
@@ -31,8 +31,9 @@ ActiveRecord::Schema.define(:version => 20120805193730) do
     t.integer  "region",       :limit => 1
     t.integer  "city",         :limit => 1
     t.integer  "user_id"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+    t.decimal  "price",                     :precision => 8, :scale => 2
   end
 
   add_index "ads", ["user_id"], :name => "index_ads_on_user_id"
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20120805193730) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "password_digest"
+    t.string   "phone"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

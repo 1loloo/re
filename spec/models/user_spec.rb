@@ -8,6 +8,7 @@
 #  created_at      :datetime        not null
 #  updated_at      :datetime        not null
 #  password_digest :string(255)
+#  phone           :string(255)
 #
 
 #!/bin/env ruby
@@ -19,7 +20,7 @@ describe User do
 
 	before do
 		@user = User.new(name: "Example User", email: "user@example.com", 
-		                 password: "foobar", password_confirmation: "foobar")
+		                 password: "foobar", password_confirmation: "foobar", phone: "1111111111")
 	end
 
   subject { @user }
