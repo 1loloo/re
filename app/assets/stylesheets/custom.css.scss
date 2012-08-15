@@ -231,19 +231,6 @@ input:hover, textarea:hover, select:hover {
 	border: 1px solid gray;
 }
 
-.form_numbers table {
-	margin-top:10px;
-}
-
-.form_numbers table td {
-	width:130px;
-}
-
-.form_numbers table td input {
-	width:70px;
-	text-align:center;
-}
-
 .form-buttons {
 	float: right;
 }
@@ -253,7 +240,7 @@ input:hover, textarea:hover, select:hover {
 	background: #525252;
 }
 
-.form_numbers table td input, .title_description input, .title_description textarea {
+.form_numbers input, .title_description input, .title_description textarea {
 	-webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
 	border-radius: 15px;
@@ -262,7 +249,7 @@ input:hover, textarea:hover, select:hover {
 
 select {
 	border-radius: 4px;
-	width: 240px;
+	width: 123px;
 	height: 30px;
 	outline: solid transparent;
 
@@ -285,11 +272,6 @@ option {
 	background: #DDD;
 	color: #666;
 	padding: 5px;
-	text-align: center;
-}
-
-select option selected {
-	display: none;
 }
 
 .field_with_errors {
@@ -306,6 +288,24 @@ select option selected {
 .buttons {
 	margin-top:1em;
 }
+
+
+.form_numbers {
+	display:block;
+	#area, #price {
+		float:left;
+		margin: 10px 10px 10px 0;
+	}
+	#area input, #price input{
+		width:230px;
+		text-align:center;
+	}
+}
+
+.pics {
+	display:block;
+}
+
 
 
 

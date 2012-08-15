@@ -1,16 +1,16 @@
 <%= fields_for(@user) do |f| %>
 				<%= f.label :name %>
 		    <%= f.text_field :name %>
-<br/>
+
 				<%= f.label :phone, "Phone" %>
 		    <%= f.password_field :phone %>
-<br/>
+
 		    <%= f.label :email %>
 		    <%= f.text_field :email %>
-<br/>
+
 		    <%= f.label :password %>
 		    <%= f.password_field :password %>
-<br/>
+
 		    <%= f.label :password_confirmation, "Confirmation" %>
 		    <%= f.password_field :password_confirmation %>
 <% end %>

@@ -1,14 +1,14 @@
 <% provide(:title, 'Подать объявление') %>
 
 <div class="myform">
-    <%= form_for @ad, :as => :post, :url => ads_path, :html => {:class => "well"}, :remote => true do |f| %>
+    <%= form_for @ad, :as => :post, :url => ads_path, :html => {:class => "well"} do |f| %>
 			<%= render 'shared/error_messages' %>
 			
 			<div class="title_description">
 			<%= f.label :title, "Заголовок #{show_errors(@ad, :title)}" %>
       <%= f.text_field :title %><br/>
       <%= f.label :description, "Описание #{show_errors(@ad, :description)}" %>
-      <%= f.text_area :description, :rows => 7 %>
+      <%= f.text_area :description, :rows => 7, value: "Описание..." %>
 			</div>	
 
 <div class="buttons">
@@ -41,30 +41,25 @@
 			</div>
 </div>
 <br />
-			<%= f.select(:real_estate, [ ['Тип едвижимости', 0], ['Квартира', 1], ['Комната', 2], ['Помещение', 3], ['Дом', 4], ['Участок', 5], ['Гараж', 6] ],:selected => 0 ) %>
-			<%= f.select(:purpose, [ ['Назначение', 0], ['Офис', 1], ['Торговля', 2], ['Сфера услуг', 3], ['Склад', 4], ['Производство', 5], ['Различного назначения', 6] ],:selected => 0 ) %>
+			<%= f.select(:real_estate, [ ['Тип', 666], ['Квартира', 1], ['Комната', 2], ['Помещение', 3], ['Дом', 4], ['Участок', 5], ['Гараж', 6] ],:selected => 666 ) %>
+			<%= f.select(:purpose, [ ['Назначение', 666], ['Офис', 1], ['Торговля', 2], ['Сфера услуг', 3], ['Склад', 4], ['Производство', 5], ['Различного назначения', 6] ],:selected => 666 ) %>
+			<%= f.select(:floor, [ ['Этаж', 666], ['Подвал', 0], ['Цоколь', 01], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['8', 8], ['9', 9], ['10', 10], ['11', 11], ['12', 12], ['13', 13], ['14', 14], ['15', 15], ['16', 16], ['17', 17], ['18', 18] ],:selected => 666 ) %>
+			<%= f.select(:rooms_number, [ ['Комнат', 666], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['8', 8], ['9', 9], ['10', 10], ['11', 11], ['12', 12] ],:selected => 666 ) %>
 
 			<div class="form_numbers">
-<table>
-		<tr><td>
+			<div id="area">
 			<%= f.label :area, "Площадь" %>:
-			<%= f.text_field :area %></td>
-		<td>
+			<%= f.text_field :area %>
+			</div>
+			<div id="price">
 			<%= f.label :price, "Цена" %>:
-			<%= f.text_field :price %></td>
-		<td>
-			<%= f.label :floor, "Комнат" %>:
-			<%= f.text_field :floor %></td>
-		<td>
-			<%= f.label :rooms_number, "Этаж" %>:
-			<%= f.text_field :rooms_number %>
-		</td></tr>
-</table>
+			<%= f.text_field :price %>
+			</div>
 			</div>
 
 <br />
 
-			<div class="form-inline pics">
+			<div class="pics">
 			<%= label :heating, "Фото:" %>
   		<%= f.file_field :picture %>
 			</div>
@@ -88,9 +83,11 @@
 
 		<script>
 		$(document).ready(function(){
-			$("#post_purpose, #post_real_estate").hover(function() {
-				$("#post_real_estate option[value='0']").hide();
-				$("#post_purpose option[value='0']").hide();
+			$("#post_purpose, #post_real_estate, #post_floor, #post_rooms_number").hover(function() {
+				$("#post_real_estate option[value='666']").hide();
+				$("#post_purpose option[value='666']").hide();
+				$("#post_floor option[value='666']").hide();
+				$("#post_rooms_number option[value='666']").hide();
 			});
 		});
 		</script>

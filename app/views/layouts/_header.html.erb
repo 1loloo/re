@@ -4,8 +4,12 @@
 		<div class="navTop">
 			<ul>
 				<li><%= link_to "Подать объявление", new_ad_path %></li>
-				<li><%= link_to "Вход", '#' %></li>
-				<li><%= link_to "Профиль", '#' %></li>
+				<% if signed_in? %>
+					<li><%= link_to "Профиль", current_user %></li>
+					<li><%= link_to "Выход", signout_path, method: "delete" %></li>
+				<% else %>
+					<li><%= link_to "Вход", signin_path %></li>
+				<% end %>
 			</ul>
 		</div>
 	</div>
