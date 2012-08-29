@@ -13,11 +13,22 @@ describe "User pages" do
     it { should have_selector('title', text: user.name) }
   end
 
+  describe "edit" do
+    let(:user) { FactoryGirl.create(:user) }
+    before { visit edit_user_path(user) }
+
+    describe "with invalid information" do
+      before { click_button "Сохранить" }
+
+      it { should have_content('error') }
+    end
+  end
+
   describe "signup" do
 
     before { visit signup_path }
 
-    let(:submit) { "Create my account" }
+    let(:submit) { "Сохранить" }
 
     describe "with invalid information" do
       it "should not create a user" do
@@ -27,11 +38,11 @@ describe "User pages" do
 
     describe "with valid information" do
       before do
-        fill_in "Name",         with: "Example"
-        fill_in "Phone",         with: "1234567"
+        fill_in "Имя",         with: "Example"
+        fill_in "Телефон",         with: "1234567"
         fill_in "Email",        with: "user@example.com"
-        fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar"
+        fill_in "Пароль",     with: "foobar"
+        fill_in "Подтверждение пароля", with: "foobar"
       end
 
       it "should create a user" do

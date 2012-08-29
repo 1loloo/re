@@ -10,18 +10,15 @@ describe "Authentication" do
     before { visit signin_path }
 
     describe "with invalid information" do
-      before { click_button "Sign in" }
+      before { click_button "Войти" }
 
       it { should have_selector('div.alert.alert-error', text: 'Неверный') }
     end
 
     describe "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
-      before do
-        fill_in "Email",    with: user.email
-        fill_in "Password", with: user.password
-        click_button "Sign in"
-      end
+      before { sign_in user }
+
       it { should have_selector('title', text: user.name) }
       it { should have_link('Профиль', href: user_path(user)) }
       it { should have_link('Выход', href: signout_path) }

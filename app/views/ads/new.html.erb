@@ -1,81 +1,115 @@
 <% provide(:title, 'Подать объявление') %>
 
-<div class="myform">
-    <%= form_for @ad, :as => :post, :url => ads_path, :html => {:class => "well"} do |f| %>
+<div class="wrapper">
+    <%= form_for @ad, :as => :post, :url => ads_path, :html => {:id => "add-form"} do |f| %>
 			<%= render 'shared/error_messages' %>
-			
-			<div class="title_description">
-			<%= f.label :title, "Заголовок #{show_errors(@ad, :title)}" %>
-      <%= f.text_field :title %><br/>
-      <%= f.label :description, "Описание #{show_errors(@ad, :description)}" %>
-      <%= f.text_area :description, :rows => 7, value: "Описание..." %>
-			</div>	
 
-<div class="buttons">
-			<div class="radio_button">
-			<%= f.radio_button :deal, 'rent' %> 
-			<%= label :post_deal, :rent, 'Аренда' %>&nbsp;&nbsp;&nbsp;
-			<%= f.radio_button :deal, 'sale' %>
-			<%= label :post_deal, :sale, 'Продажа' %>
-			</div>
+		<fieldset>
+			<legend>Объявление</legend>
+		<div class="non-block">
+				<div>
+					<%= label :title, "Заголовок #{show_errors(@ad, :title)}" %>
+				  <%= f.text_field :title, :size => 50 %><br/>
+				<div>
+				</div>
+				  <%= label :description, "Описание #{show_errors(@ad, :description)}" %>
+				  <%= f.text_area :description, :rows => 7 %>
+				</div>	
+		</div>
 
-			<div class="radio_button">
-			<%= f.radio_button :owner, 'person' %> 
-			<%= label :post_owner, :person, 'Собственность' %>&nbsp;&nbsp;&nbsp;
-			<%= f.radio_button :owner, 'agency' %>
-			<%= label :post_owner, :agency, 'Агентство (Субаренда)' %>
-			</div>
+		<div class="tweekers">
+		<div>
+			<ul class="block">
+				<li>
+				<%= f.radio_button :deal, 'rent' %> 
+				<%= label :post_deal, :rent, 'Аренда' %>
+				</li>
+				<li>
+				<%= f.radio_button :deal, 'sale' %>
+				<%= label :post_deal, :sale, 'Продажа' %>
+				</li>
+			</ul>
+		</div>
 
-			<div class="check_box">
-			<%= f.check_box :water %>
-			<%= label :post, :water, "Вода" %>&nbsp;&nbsp;&nbsp;
+		<div>
+			<ul class="block">
+				<li>
+					<%= f.radio_button :owner, 'person' %> 
+					<%= label :post_owner, :person, 'Собственность' %>
+				</li>
+				<li>
+					<%= f.radio_button :owner, 'agency' %>
+					<%= label :post_owner, :agency, 'Агентство (Субаренда)' %>
+				</li>
+			</ul>
+		</div>
 
-			<%= f.check_box :light %>
-			<%= label :post, :light, "Свет" %>&nbsp;&nbsp;&nbsp;
+		<div>
+			<ul class="block">
+				<li>
+					<%= f.check_box :water %>
+					<%= label :post, :water, "Вода" %>
+				</li>
+				<li>
+					<%= f.check_box :light %>
+					<%= label :post, :light, "Свет" %>
+				</li>
+				<li>
+					<%= f.check_box :bathroom %>
+					<%= label :post, :bathroom, "Туалет" %>
+				</li>
+				<li>
+					<%= f.check_box :heating %>
+					<%= label :post, :heating, "Отопление" %>
+				</li>
+			</ul>
+		</div>
+		</div>
 
-			<%= f.check_box :bathroom %>
-			<%= label :post, :bathroom, "Туалет" %>&nbsp;&nbsp;&nbsp;
-
-			<%= f.check_box :heating %>
-			<%= label :post, :heating, "Отопление" %>
-			</div>
-</div>
-<br />
+		<div class="selects">
+			<ul>
+				<li>
 			<%= f.select(:real_estate, [ ['Тип', 666], ['Квартира', 1], ['Комната', 2], ['Помещение', 3], ['Дом', 4], ['Участок', 5], ['Гараж', 6] ],:selected => 666 ) %>
+				</li>
+				<li>
 			<%= f.select(:purpose, [ ['Назначение', 666], ['Офис', 1], ['Торговля', 2], ['Сфера услуг', 3], ['Склад', 4], ['Производство', 5], ['Различного назначения', 6] ],:selected => 666 ) %>
+				</li>
+				<li>
 			<%= f.select(:floor, [ ['Этаж', 666], ['Подвал', 0], ['Цоколь', 01], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['8', 8], ['9', 9], ['10', 10], ['11', 11], ['12', 12], ['13', 13], ['14', 14], ['15', 15], ['16', 16], ['17', 17], ['18', 18] ],:selected => 666 ) %>
+				</li>
+				<li>
 			<%= f.select(:rooms_number, [ ['Комнат', 666], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['8', 8], ['9', 9], ['10', 10], ['11', 11], ['12', 12] ],:selected => 666 ) %>
+				</li>
+			</ul>
+		</div>
 
-			<div class="form_numbers">
-			<div id="area">
-			<%= f.label :area, "Площадь" %>:
-			<%= f.text_field :area %>
-			</div>
-			<div id="price">
-			<%= f.label :price, "Цена" %>:
-			<%= f.text_field :price %>
-			</div>
-			</div>
+			<ul class="area">
+				<li>
+					<%= label :post, :area, "Площадь" %>
+					<%= f.text_field :area %>
+				</li>
+				<li>
+					<%= label :post, :price, "Цена" %>
+					<%= f.text_field :price %>
+				</li>
+			</ul>
 
-<br />
-
-			<div class="pics">
+		<div class="non-block">
+			<div>
 			<%= label :heating, "Фото:" %>
   		<%= f.file_field :picture %>
 			</div>
+		</div>
+		</fieldset>
 
-
-			<br />
-
-
-
-
+		<fieldset>
+			<legend>Регистрация</legend>
 			<%= render "shared/new_user_fields" %>
+		</fieldset>
 
-			<div class="form-buttons">
-      <%= f.submit "Отправить", class: "btn btn-large" %>
-			<input type="reset" value="Сброс">
-			</div>
+		<div class="submit">
+      <%= f.submit "Отправить", class: "contact-submit" %> <input type="reset" value="Сброс">
+		</div>
 
     <% end %>
 
@@ -90,6 +124,19 @@
 				$("#post_rooms_number option[value='666']").hide();
 			});
 		});
+
+		$("input:text, textarea")
+			.focus(function() {
+				    if (this.value === this.defaultValue) {
+				        this.value = '';
+				    }
+			})
+			.blur(function() {
+				    if (this.value === '') {
+				        this.value = this.defaultValue;
+				    }
+		});
+
 		</script>
 
 
