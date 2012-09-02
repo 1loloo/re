@@ -1,22 +1,22 @@
 <%= fields_for(@user) do |f| %>
-		<div class="non-block">
-				<div>
+		<div class="non-block regestry">
+				<div class="target">
 				<%= f.label :name %>
 		    <%= f.text_field :name %>
-				<div>
 				</div>
+				<div class="target">
 				<%= f.label :phone, "Phone" %>
 		    <%= f.password_field :phone %>
-				<div>
 				</div>
+				<div class="target">
 		    <%= f.label :email %>
 		    <%= f.text_field :email %>
-				<div>
 				</div>
+				<div class="target">
 		    <%= f.label :password %>
 		    <%= f.password_field :password %>
-				<div>
 				</div>
+				<div class="target">
 		    <%= f.label :password_confirmation, "Confirmation" %>
 		    <%= f.password_field :password_confirmation %>
 				</div>	

@@ -9,24 +9,23 @@
   </head>
   <body>
 		<%= render 'layouts/header' %>
-		<div class="wrap">
-			<section>
-				<aside>
-					<ul>
-						<li>Главная</li>
-						<li>Поиск</li>
-						<li>Подать</li>
+			<div class="wrapper">
+				<div>
+					<ul class="aside">
+						<li><%= link_to "Главная", current_user %></li>
+						<li><%= link_to "Поиск", current_user %></li>
+						<li><%= link_to "Подать", current_user %></li>
 					</ul>
-				</aside>
-				<article>
+				</div>
+				<div class="main">
 					<% flash.each do |key, value| %>
         		<%= content_tag(:div, value, class: "alert alert-#{key}") %>
       		<% end %>
 					<%= yield %>
-				</article>
-			</section>
-					<%= render 'layouts/footer' %>
-					<%= debug(params) if Rails.env.development? %>
-		</div>
+				</div>
+			</div>
+		<%= render 'layouts/footer' %>
+		<%= debug(params) if Rails.env.development? %>
+
   </body>
 </html>

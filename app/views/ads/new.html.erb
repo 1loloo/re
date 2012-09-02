@@ -1,24 +1,22 @@
 <% provide(:title, 'Подать объявление') %>
 
-<div class="wrapper">
     <%= form_for @ad, :as => :post, :url => ads_path, :html => {:id => "add-form"} do |f| %>
-			<%= render 'shared/error_messages' %>
 
 		<fieldset>
 			<legend>Объявление</legend>
 		<div class="non-block">
-				<div>
-					<%= label :title, "Заголовок #{show_errors(@ad, :title)}" %>
-				  <%= f.text_field :title, :size => 50 %><br/>
-				<div>
+				<div class="target">
+					<%= label :title, "Заголовок" %>
+				  <%= f.text_field :title, :size => 50 %>
 				</div>
-				  <%= label :description, "Описание #{show_errors(@ad, :description)}" %>
+				<div class="target">
+				  <%= label :description, "Описание" %>
 				  <%= f.text_area :description, :rows => 7 %>
 				</div>	
 		</div>
 
 		<div class="tweekers">
-		<div>
+
 			<ul class="block">
 				<li>
 				<%= f.radio_button :deal, 'rent' %> 
@@ -29,9 +27,7 @@
 				<%= label :post_deal, :sale, 'Продажа' %>
 				</li>
 			</ul>
-		</div>
 
-		<div>
 			<ul class="block">
 				<li>
 					<%= f.radio_button :owner, 'person' %> 
@@ -42,9 +38,7 @@
 					<%= label :post_owner, :agency, 'Агентство (Субаренда)' %>
 				</li>
 			</ul>
-		</div>
 
-		<div>
 			<ul class="block">
 				<li>
 					<%= f.check_box :water %>
@@ -63,7 +57,7 @@
 					<%= label :post, :heating, "Отопление" %>
 				</li>
 			</ul>
-		</div>
+
 		</div>
 
 		<div class="selects">
@@ -85,11 +79,11 @@
 
 			<ul class="area">
 				<li>
-					<%= label :post, :area, "Площадь" %>
+					<%= label :post, :area, "Площадь(м)" %>
 					<%= f.text_field :area %>
 				</li>
 				<li>
-					<%= label :post, :price, "Цена" %>
+					<%= label :post, :price, "Цена(р)" %>
 					<%= f.text_field :price %>
 				</li>
 			</ul>
@@ -112,8 +106,6 @@
 		</div>
 
     <% end %>
-
-</div>
 
 		<script>
 		$(document).ready(function(){

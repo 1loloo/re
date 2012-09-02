@@ -1,7 +1,7 @@
 body {
-	background-color: #fff;
+	background-color: rgb(135, 245, 255);
 	color: #111;
-	margin: 0;
+	margin:0;
 	padding: 0;
 	font: 0.75em/1.3 "Lucida Grande", "Lucida Sans Unicode",
 	"Lucida Sans", Verdana, Tahoma, sans-serif;
@@ -14,9 +14,9 @@ label, input, li, ul, textarea {
 	font-size: 1em;
 }
 
-form {
+form .add-form {
 	background-color: rgb(244,252,232);
-	width: 550px;
+	width:550px;
 	padding: 1em;
 	border-radius: 10px;
 }
@@ -36,13 +36,7 @@ legend {
 	font-size: 150%;
 }
 
-form div {
-	float: left;
-	width: 100%;
-	padding: 0;
-	margin: 0;
-	position: relative;
-}
+
 
 form p.help {
 	font-style: italic;
@@ -59,8 +53,12 @@ form label {
 	font-size: 120%;
 }
 
-form div.non-block div{
+form div.target {
 	padding-top: 1em;
+}
+
+form div.regestry{
+	margin:0 70px 0 70px;
 }
 
 form div.non-block input {
@@ -71,8 +69,16 @@ form div.non-block input {
 	padding: 0.25em;
 }
 
+.tweekers {
+	margin:1em 0 1em 50px;
+}
+
+.group {
+	display:block; width:100%
+}
+
 form ul.block {
-	display:block;
+	clear:both;
 	margin-left:20%;
 }
 
@@ -99,23 +105,26 @@ ul.area li {
 }
 
 ul.area li label {
-	width: 30%;
+	width: 100px;
 	text-align:right;
 	margin-right:0.5em;
+	margin-top:0.25em;
 }
 
 form ul.area li input {
-	width:50%;
+	width:40%;
 	font-size: 133%;
 	border: 0;
 	border-radius: 10px;
 	padding: 0.25em;
 	text-align:center;
+	margin-bottom:0.5em;
 }
 
 form div.selects {
+	clear:both;
 	list-style:none;
-	margin-left:2%;
+	margin:0 20px 0 20px;
 }
 
 form div.selects li {
@@ -137,6 +146,8 @@ select {
 	border-radius: 10px;
 	padding:0.25em;
 	width:8em;
+	margin-top:7px;
+	border: 0;
 }
 
 select input:focus {
@@ -153,7 +164,7 @@ div.submit {
 	background-color: rgba(126,208,214,0.3);
 	border: 3px solid rgb(255,255,255);
 	border-radius: 10px;
-	margin: 0 0 1em 0;
+	margin: 0 auto 1em auto;
 	padding: 0.5em 0 0.5em 0;
 	text-align: center;
 }
@@ -172,16 +183,90 @@ form input[type="submit"]:hover , form input[type="reset"]:hover {
 	background-color: rgb(78,150,137);
 }
 
-.tweekers {
-	margin:1em 0 1em 0;
+.area span {
+	font-size: 133%;
+	margin-left:0.5em;
 }
 
 
 
 
+/* layout */
+
+.wrapper {
+	width: 730px;
+	margin: 0 auto 0 auto;
+	background-color: rgb(244,252,232);
+	padding:1em;
+	border-radius: 10px;
+}
+
+.aside {
+float: left;
+}
+
+.main {
+	margin-left:155px;
+	min-height:600px;
+}
 
 
+/* left menu */
+.aside {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 150px;
+	font-size: 133%;
+}
+.aside li {
+	border-left: 10px solid rgb(126,208,214);
+	border-bottom: 1px solid rgb(144,154,181);
+	border-radius: 10px;
+	margin:0 0 2px 0; 
+}
 
+.aside li:first-of-type {
+	margin-top:10px;
+}
+
+.aside li a:link,
+.aside li a:visited {
+	background-color: rgba(126,208,214,0.3);
+	color: rgb(49,52,61);
+	padding: 0.5em;
+	display: block;
+	text-decoration: none;
+	border-left: 5px solid rgb(239,213,252);
+	border-radius: 0 10px 10px 0;
+}
+
+.aside li a:hover {
+	background-color: rgba(126,208,214,0.8);
+	color: rgb(255,255,255);
+	border-left: 5px solid rgb(250,136,234);
+}
+
+form div.field_with_errors input, form div.field_with_errors textarea {
+	background-color: rgba(255, 0, 0, 0.2);
+	border-radius: 10px;
+}
+
+
+/* users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid gray;
+    &:last-child {
+      border-bottom: 1px solid gray;
+    }
+  }
+}
 
 
 
